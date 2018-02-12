@@ -1,4 +1,4 @@
-switch (FitRankings.NODE_ENV) {
+switch (Settings.NODE_ENV) {
   case 'prod':
     module.exports = require('./config/webpack.prod')({env: 'prod'});
     break;

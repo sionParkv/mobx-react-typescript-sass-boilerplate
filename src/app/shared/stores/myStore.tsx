@@ -16,4 +16,4 @@ class MyStore {
     }
 }
 
-export default new MyStore();
+export default MyStore;

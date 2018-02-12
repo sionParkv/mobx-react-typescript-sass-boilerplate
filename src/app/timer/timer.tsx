@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {observer, inject} from 'mobx-react';
+import * as styles from './timer.scss';
 
 @inject("myStore") @observer
 class Timer extends React.Component<{ myStore?: any }> {
@@ -11,7 +12,7 @@ class Timer extends React.Component<{ myStore?: any }> {
         const {myStore} = this.props;
         return (
             <div>
-                <button onClick={this.onReset.bind(this)}>
+                <button className={styles.button} onClick={this.onReset.bind(this)}>
                     Seconds passed: {myStore.timerData.secondsPassed}
                 </button>
             </div>

@@ -4,17 +4,14 @@ import {Provider} from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Timer from './timer/timer';
-import myStore from './stores/myStore';
-
-const stores = {
-    myStore
-};
+import rootStore from './store';
+import './main.scss';
 
 class App extends React.Component {
     render() {
         return (
             <div>
-                <Provider {...stores}>
+                <Provider {...rootStore}>
                     <Router>
                         <Route path="/" component={Timer}/>
                     </Router>

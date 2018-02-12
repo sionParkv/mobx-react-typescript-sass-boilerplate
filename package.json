@@ -9,14 +9,20 @@
     "build:prod": "webpack --config config/webpack.prod.js --progress --profile --bail"
   },
   "author": "Jason Barnett <jason@thebarnetts.ws> (http://github.com/jhbarnett)",
+  "repository": "https://github.com/jhbarnett/mobx-react-typescript-sass-boilerplate",
   "license": "MIT",
   "devDependencies": {
     "@types/react": "^15.0.39",
     "@types/react-dom": "^15.5.1",
     "awesome-typescript-loader": "^3.2.1",
+    "css-loader": "^0.28.9",
     "express": "^4.16.2",
     "mobx-react-devtools": "^4.2.15",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.20.1",
     "typescript": "^2.4.2",
+    "typings-for-css-modules-loader": "^1.7.0",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.11.1",
     "webpack-merge": "^4.1.1"

@@ -6,11 +6,11 @@ module.exports = function (options) {
         devtool: 'eval',
         entry: {
             entry: [
-                helpers.root('src', 'index')
+                helpers.root('src', 'app', 'index')
             ],
         },
         resolve: {
-            extensions: ['.ts', '.js', '.tsx','.css', '.scss']
+            extensions: ['.ts', '.js', '.tsx', '.css', '.scss']
         },
 
         module: {
@@ -30,10 +30,9 @@ module.exports = function (options) {
                 {
                     test: /\.s?css$/,
                     use: [
-                        // "to-string-loader",
-                        // "css-loader?sourceMap",
-                        // "resolve-url-loader",
-                        // "sass-loader?sourceMap"
+                        "style-loader",
+                        "typings-for-css-modules-loader?modules&namedExport&camelCase",
+                        "sass-loader?sourceMap"
                     ],
                     include: [
                         helpers.root('src')
@@ -45,9 +44,8 @@ module.exports = function (options) {
         plugins: [
             //3rd Party Libraries
             new webpack.ProvidePlugin({}),
-
             new webpack.DefinePlugin({
-                'FitRankings': {
+                'Settings': {
                     'NODE_ENV': JSON.stringify(options.ENV)
                 }
             }),
