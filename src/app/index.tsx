@@ -4,8 +4,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as Loadable from 'react-loadable';
 import {Provider} from 'mobx-react';
-import DevTools from 'mobx-react-devtools';
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Loading from './shared/components/loading';
 import rootStore from './store';
 import './main.scss';
@@ -32,7 +31,6 @@ class App extends React.Component {
                         </Switch>
                     </Router>
                 </Provider>
-                <DevTools/>
             </div>
         );
     }

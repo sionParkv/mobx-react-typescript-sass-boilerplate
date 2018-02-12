@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 const helpers = require('./helpers');
+const Visualizer = require('webpack-visualizer-plugin');
+
 
 module.exports = function (options) {
     return {
@@ -42,6 +44,7 @@ module.exports = function (options) {
         },
 
         plugins: [
+            new Visualizer(),
             //3rd Party Libraries
             new webpack.ProvidePlugin({}),
             new webpack.DefinePlugin({
