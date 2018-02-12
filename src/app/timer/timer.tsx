@@ -12,7 +12,7 @@ class Timer extends React.Component<{ myStore?: any }> {
         const {myStore} = this.props;
         return (
             <div>
-                <button className={styles.button} onClick={this.onReset.bind(this)}>
+                <button className={styles.redButton} onClick={this.onReset.bind(this)}>
                     Seconds passed: {myStore.timerData.secondsPassed}
                 </button>
             </div>

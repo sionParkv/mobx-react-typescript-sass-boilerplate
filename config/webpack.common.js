@@ -10,7 +10,7 @@ module.exports = function (options) {
             ],
         },
         resolve: {
-            extensions: ['.ts', '.js', '.tsx', '.css', '.scss']
+            extensions: ['.ts', '.js', '.tsx', '.css', '.scss', '.d.ts']
         },
 
         module: {
@@ -31,7 +31,7 @@ module.exports = function (options) {
                     test: /\.s?css$/,
                     use: [
                         "style-loader",
-                        "typings-for-css-modules-loader?modules&namedExport&camelCase",
+                        "typings-for-css-modules-loader?modules&namedExport&camelCase&sass",
                         "sass-loader?sourceMap"
                     ],
                     include: [

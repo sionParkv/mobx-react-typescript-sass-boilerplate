@@ -7,7 +7,7 @@ class List extends React.Component<{ myStore?: any }> {
     render() {
         const {myStore} = this.props;
         return (
-            <div className={styles.shoppingList}>
+            <div className={styles.navyText}>
                 <h1>Shopping List for {myStore.name}</h1>
                 <ul>
                     <li>Instagram</li>
