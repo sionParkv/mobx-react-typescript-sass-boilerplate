@@ -7,9 +7,11 @@ class MyStore {
         }, 1000);
     };
 
-    @observable timerData = {
+    @observable timerData: any = {
         secondsPassed: 0
     };
+
+    @observable name: string = 'Paul';
 
     @action resetTimer() {
         this.timerData.secondsPassed = 0;
