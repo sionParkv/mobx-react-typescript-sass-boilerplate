@@ -3,61 +3,30 @@ const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js');
 const helpers = require('./helpers');
 
-const ENV = 'prod';
+const ENV = 'production';
 
 module.exports = function () {
     return webpackMerge(commonConfig({
         ENV: ENV
     }), {
-
+        entry: {
+            entry: helpers.root('src', 'app', 'index'),
+            vendor: [ "semantic-ui-react" ] // must add these here bc of lazy loading w/ dynamic imports
+        },
         output: {
             path: helpers.root('dist'),
-            filename: 'bundle.js',
-            publicPath: '/dist/'
+            filename: 'bundle.js'
         },
-
-
         plugins: [
-            new webpack.NoEmitOnErrorsPlugin(),
-            new webpack.optimize.UglifyJsPlugin({
-                beautify: false,
-                output: {
-                    comments: false
-                },
-                mangle: {
-                    screw_ie8: true
-                },
-                compress: {
-                    screw_ie8: true,
-                    warnings: false,
-                    conditionals: true,
-                    unused: true,
-                    comparisons: true,
-                    sequences: true,
-                    dead_code: true,
-                    evaluate: true,
-                    if_return: true,
-                    join_vars: true,
-                    negate_iife: false // we need this for lazy v8
+            new webpack.optimize.UglifyJsPlugin(),
+            new webpack.optimize.AggressiveMergingPlugin(),
+            new webpack.optimize.CommonsChunkPlugin({
+                name: "vendor",
+                filename: "vendor.js",
+                minChunks: ({resource}) => {
+                    return /node_modules/.test(resource)
                 },
             }),
-            new webpack.LoaderOptionsPlugin({
-                minimize: true,
-                debug: false,
-                options: {
-                    htmlLoader: {
-                        minimize: true,
-                        removeAttributeQuotes: false,
-                        caseSensitive: true,
-                        customAttrSurround: [
-                            [/#/, /(?:)/],
-                            [/\*/, /(?:)/],
-                            [/\[?\(?/, /(?:)/]
-                        ],
-                        customAttrAssign: [/\)?\]?=/]
-                    },
-                }
-            })
         ]
-    })
+    });
 };

@@ -1,7 +1,10 @@
 const webpack = require('webpack');
 const helpers = require('./helpers');
-const Visualizer = require('webpack-visualizer-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+var noVisualization = process.env.NODE_ENV === 'production'
+    || process.argv.some(arg => arg.indexOf('webpack-dev-server') >= 0);
 
 module.exports = function (options) {
     return {
@@ -12,6 +15,10 @@ module.exports = function (options) {
             ],
         },
         resolve: {
+            modules: [
+                helpers.root('src', 'app'),
+                helpers.root('node_modules')
+            ],
             extensions: ['.ts', '.js', '.tsx', '.css', '.scss', '.d.ts']
         },
 
@@ -42,16 +49,23 @@ module.exports = function (options) {
                 },
             ]
         },
-
         plugins: [
-            new Visualizer(),
+            (!noVisualization ?
+                new BundleAnalyzerPlugin({
+                    analyzerMode: 'static'
+                }) : null),
+            new HtmlWebpackPlugin({
+                chunks: [], // don't inject chunks
+                template: helpers.root('index.html')
+            }),
             //3rd Party Libraries
             new webpack.ProvidePlugin({}),
             new webpack.DefinePlugin({
-                'Settings': {
+                'process.env': {
                     'NODE_ENV': JSON.stringify(options.ENV)
                 }
             }),
+
         ]
     }
 };

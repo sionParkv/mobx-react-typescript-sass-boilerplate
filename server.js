@@ -1,12 +1,12 @@
 var express = require('express');
 var app = express();
-app.use(express.static(__dirname + '/'));
+app.use(express.static(__dirname + '/dist/'));
 var settings = {
     server_port: 3000
 };
 
 app.get('/**', function (request, response) {
-    response.sendFile('/index.html');
+    response.sendFile(__dirname + '/dist/index.html');
 });
 
 /**

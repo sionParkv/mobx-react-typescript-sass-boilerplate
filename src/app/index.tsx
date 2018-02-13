@@ -2,22 +2,14 @@ import * as ES6Promise from "es6-promise";
 ES6Promise.polyfill();
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as Loadable from 'react-loadable';
 import {Provider} from 'mobx-react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import Loading from './shared/components/loading';
 import rootStore from './store';
 import './main.scss';
-
-const LazyTimer = Loadable({
-    loader: () => import('./timer/timer'),
-    loading: Loading
-});
-
-const LazyList = Loadable({
-    loader: () => import('./list/list'),
-    loading: Loading
-});
+import {
+    LazyList,
+    LazyTimer
+} from './loadable';
 
 class App extends React.Component {
     render() {
