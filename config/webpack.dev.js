@@ -11,17 +11,14 @@ module.exports = function() {
     }), {
         output: {
             path: helpers.root('dist'),
-            filename: 'bundle.js',
-            publicPath: '/dist/'
+            filename: 'bundle.js'
         },
-
         plugins: [
             new webpack.LoaderOptionsPlugin({
                 debug: true,
                 options: {}
             })
         ],
-
         devServer: {
             port: 3000,
             host: '127.0.0.1',

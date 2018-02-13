@@ -1,18 +1,13 @@
 const webpack = require('webpack');
 const helpers = require('./helpers');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-var noVisualization = process.env.NODE_ENV === 'production'
-    || process.argv.some(arg => arg.indexOf('webpack-dev-server') >= 0);
 
 module.exports = function (options) {
     return {
         devtool: 'eval',
         entry: {
-            entry: [
-                helpers.root('src', 'app', 'index')
-            ],
+            bundle: helpers.root('src', 'app', 'index'),
+            vendor: ["semantic-ui-react"]
         },
         resolve: {
             modules: [
@@ -50,10 +45,6 @@ module.exports = function (options) {
             ]
         },
         plugins: [
-            (!noVisualization ?
-                new BundleAnalyzerPlugin({
-                    analyzerMode: 'static'
-                }) : null),
             new HtmlWebpackPlugin({
                 chunks: [], // don't inject chunks
                 template: helpers.root('index.html')
@@ -64,6 +55,13 @@ module.exports = function (options) {
                 'process.env': {
                     'NODE_ENV': JSON.stringify(options.ENV)
                 }
+            }),
+            new webpack.optimize.CommonsChunkPlugin({
+                name: "vendor",
+                filename: "vendor.js",
+                minChunks: ({resource}) => {
+                    return /node_modules/.test(resource)
+                },
             }),
 
         ]

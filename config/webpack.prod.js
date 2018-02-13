@@ -9,10 +9,6 @@ module.exports = function () {
     return webpackMerge(commonConfig({
         ENV: ENV
     }), {
-        entry: {
-            entry: helpers.root('src', 'app', 'index'),
-            vendor: [ "semantic-ui-react" ] // must add these here bc of lazy loading w/ dynamic imports
-        },
         output: {
             path: helpers.root('dist'),
             filename: 'bundle.js'
@@ -20,13 +16,6 @@ module.exports = function () {
         plugins: [
             new webpack.optimize.UglifyJsPlugin(),
             new webpack.optimize.AggressiveMergingPlugin(),
-            new webpack.optimize.CommonsChunkPlugin({
-                name: "vendor",
-                filename: "vendor.js",
-                minChunks: ({resource}) => {
-                    return /node_modules/.test(resource)
-                },
-            }),
         ]
     });
 };

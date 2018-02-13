@@ -7,14 +7,14 @@
     "build:dev": "webpack --config config/webpack.dev.js --progress --profile --bail --env=local",
     "build:staging": "webpack --config config/webpack.stag.js --progress --profile --bail",
     "build:prod": "webpack --config config/webpack.prod.js --progress --profile --bail",
-    "analyze": "npm run build:prod && open ./dist/report.html"
+    "analyze": "npm run build:staging && open ./dist/report.html"
   },
   "author": "Jason Barnett <jason@thebarnetts.ws> (http://github.com/jhbarnett)",
   "repository": "https://github.com/jhbarnett/mobx-react-typescript-sass-boilerplate",
   "license": "MIT",
   "devDependencies": {
     "@types/es6-promise": "^3.3.0",
-    "@types/react": "^15.6.13",
+    "@types/react": "^15.6.14",
     "@types/react-dom": "^15.5.7",
     "@types/react-loadable": "^5.3.3",
     "@types/react-router-dom": "^4.2.4",
