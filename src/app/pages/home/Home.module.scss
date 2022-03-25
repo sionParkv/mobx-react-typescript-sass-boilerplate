@@ -1,0 +1,215 @@
+.App2 {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.player-name,
+.score-board {
+  display: flex;
+  margin: 0 50px;
+  min-height: 100px;
+  font-size: 12pt;
+}
+
+.player-name {
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 10px;
+  font-size: 12pt;
+  border: 1px solid black;
+  border-bottom: none;
+}
+
+.score-board {
+  margin-bottom: 30px;
+}
+
+.frame {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.frame:last-child {
+  flex: 3;
+}
+
+.frame-number {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  background: #bb9;
+}
+
+.frame-score {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.running-score {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.frame:last-child .frame-score {
+  border-right: 1px solid black;
+}
+
+.frame:last-child .running-score {
+  border-right: 1px solid black;
+}
+
+.box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box.right {
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.extra {
+  display: none;
+}
+
+.frame:last-child div.extra {
+  display: flex;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.frame:last-child div.left {
+  border-bottom: 1px solid black;
+}
+
+.frame-score div.right {
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.controls-left {
+  display: flex;
+  margin: 50px;
+  margin-bottom: 20px;
+}
+.controls-right {
+  margin: 50px;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.roll {
+  margin-right: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 10%;
+  border: 1px solid blue;
+  background: lightyellow;
+  font-size: 1em;
+}
+
+.roll:hover {
+  border: 1px solid blueviolet;
+}
+.roll:active {
+  background: lightskyblue;
+}
+
+.reset {
+  border-radius: 3%;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.controls {
+  display: flex;
+}
+
+.title{
+  color:#bbbb99;
+  background-color: aquamarine;
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  height: 50px;
+  flex: 1;
+  margin-bottom: 50px;
+}
+
+.Btn{
+  color:#000000;
+  background-color: aquamarine;
+  width: 30px;
+  height: 30px;
+  flex: 1;
+  margin-bottom: 30px;
+}
+
+.PlayBtn{
+  width: 200px;
+  height: 30px;
+  flex: 3;
+}
+
+.player-number-wrapper{
+  margin-top: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  background-color: beige;
+  margin-left: 500px;
+  margin-right: 500px;
+}
