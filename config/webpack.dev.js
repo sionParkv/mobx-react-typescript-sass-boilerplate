@@ -2,12 +2,13 @@ const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js');
 const helpers = require('./helpers');
+const path = require('path');
 
 const ENV = 'local';
 
 module.exports = function() {
     return webpackMerge(commonConfig({
-        ENV: ENV
+        ENV,
     }), {
         output: {
             path: helpers.root('dist'),
@@ -24,15 +25,14 @@ module.exports = function() {
 
         devServer: {
             port: 3000,
+            static: './',
+            hot: true,
             host: '127.0.0.1',
             historyApiFallback: true,
             headers: { 'Access-Control-Allow-Origin': '*' },
-            stats: 'minimal',
-            watchOptions: {
-                // aggregateTimeout: 300,
-                // poll: 1000,
-                ignored: /node_modules/
-            }
+            watchFiles: [
+              'src/**/*',
+            ],
         }
     })
 };

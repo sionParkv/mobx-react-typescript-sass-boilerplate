@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const helpers = require('./helpers');
-const Visualizer = require('webpack-visualizer-plugin');
 
 
 module.exports = function (options) {
@@ -21,10 +20,7 @@ module.exports = function (options) {
                     test: /\.tsx?$/,
                     use: [
                         {
-                            loader: 'awesome-typescript-loader',
-                            options: {
-                                configFileName: helpers.root('tsconfig.json')
-                            }
+                            loader: 'ts-loader',
                         },
                     ],
                     include: helpers.root('src')
@@ -33,8 +29,8 @@ module.exports = function (options) {
                     test: /\.s?css$/,
                     use: [
                         "style-loader",
-                        "typings-for-css-modules-loader?modules&namedExport&camelCase&sass",
-                        "sass-loader?sourceMap"
+                        "css-loader",
+                        "sass-loader?sourceMap",
                     ],
                     include: [
                         helpers.root('src')
@@ -44,7 +40,6 @@ module.exports = function (options) {
         },
 
         plugins: [
-            new Visualizer(),
             //3rd Party Libraries
             new webpack.ProvidePlugin({}),
             new webpack.DefinePlugin({

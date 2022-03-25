@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es6",
     "removeComments": true,
     "experimentalDecorators": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
+    "target": "es6",
     "moduleResolution": "node",
     "module": "esnext",
-    "strict": true,
     "importHelpers": true,
+    "allowJs": true,
     "outDir": "dist"
   },
   "include": [
-    "./src/app",
+    "./src/app"
   ],
   "lib": [
     "dom",

@@ -1,5 +1,10 @@
-import MyStore from './shared/stores/myStore';
+import GameStore from './shared/stores/gameStore';
+import { createObservableHistory } from 'mobx-observable-history';
+import HistoryStore from './shared/stores/historyStore';
+
+const navigation = createObservableHistory<History>();
 
 export default {
-    myStore: new MyStore(),
+  historyStore: new HistoryStore(navigation),
+  gameStore: new GameStore(),
 }
